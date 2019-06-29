@@ -56,7 +56,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let sprite = SKSpriteNode(imageNamed: enemy)
         sprite.position = CGPoint(x: 1200, y: Int.random(in: 50...736))
-        addChild((sprite))
+        if !isGameOver {
+            addChild((sprite))
+        } else { return }
         
         sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
         sprite.physicsBody?.categoryBitMask = 1
